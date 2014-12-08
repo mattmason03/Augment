@@ -1,5 +1,6 @@
 #include <chrono>
 #include <thread>
+#include <iostream>
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
@@ -10,11 +11,11 @@
 
 #include "Texture2D.h"
 #include "Batch2D.h"
-
+#include "EntityFramework.h"
 
 static void error_callback(int error, const char* description)
 {
-	fputs(description, stderr);
+	LOG("GLFW", "Code " + error + std::string(description));
 }
 static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -22,9 +23,10 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 		glfwSetWindowShouldClose(window, GL_TRUE);
 }
 int main(int argc, char** argv)
-{
+{	
 
 	GLFWwindow* window;
+
 	glfwSetErrorCallback(error_callback);
 	if (!glfwInit())
 		exit(EXIT_FAILURE);
@@ -35,12 +37,12 @@ int main(int argc, char** argv)
 		exit(EXIT_FAILURE);
 	}
 
-
 	glfwMakeContextCurrent(window);
 
 	GLenum status = glewInit();
 
 	if (status != GLEW_OK){
+		LOG("Glew", std::string((char*)glewGetErrorString(status)));
 		fprintf(stderr, "%s\n", glewGetErrorString(status));
 		exit(EXIT_FAILURE);
 	}
@@ -53,20 +55,21 @@ int main(int argc, char** argv)
 	shaderProgram.Link();
 	shaderProgram.Bind();*/
 	{
-		Texture2D redSquare(R"(C:\git\Augment\res\smile.png)");
+		Texture2D redSquare(R"(D:\git\Augment\Augment\res\smile.png)");
 	}
-	Texture2D redSquare(R"(C:\git\Augment\res\smile.png)");
+	Texture2D redSquare(R"(D:\git\Augment\Augment\res\smile.png)");
 	//Texture2D redSquare(R"(C:\Users\mamaso\Documents\Visual Studio 2013\Projects\GLFWTest\Debug\red.png)");
 	//Texture2D smile(R"(C:\Users\mamaso\Documents\Visual Studio 2013\Projects\GLFWTest\Debug\smile.png)");
 
 	Batch2D batch;
 
 	glfwSwapInterval(0);
-
 	double oldTime = 0;
 	float rot = 0;
 	while (!glfwWindowShouldClose(window))
 	{
+		LOG("main", "loop begin");
+
 		double currentTime = glfwGetTime();
 		oldTime = currentTime;
 		const GLfloat color[] = { (float)sin(currentTime) * 0.5f + 0.5f,
@@ -79,9 +82,7 @@ int main(int argc, char** argv)
 
 		batch.Begin();
 
-		
 		batch.SetTexture(redSquare, &glm::vec4(0, 0, 620, 620));
-		
 		batch.Draw(glm::vec2(100, 100), glm::vec3((float)sin(currentTime) * 1.57f + 1.57f, 0, 0), glm::vec2(.1, .1), glm::vec2(310, 310));
 		batch.Draw(glm::vec2(200, 100), glm::vec3(0, (float)sin(currentTime) * 1.57f + 1.57f, 0), glm::vec2(.1, .1), glm::vec2(310, 310));
 		batch.Draw(glm::vec2(300, 100), glm::vec3(0, 0, (float)sin(currentTime) * 1.57f + 1.57f), glm::vec2(.1, .1), glm::vec2(310, 310));
@@ -94,7 +95,7 @@ int main(int argc, char** argv)
 		rot = glm::mod(rot + 10.f, 360.f);
 
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000 / 60));
+		std::this_thread::sleep_for(std::chrono::milliseconds(1000 / 15));
 	}
 
 	//glDeleteVertexArrays(1, &vao);

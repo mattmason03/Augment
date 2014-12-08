@@ -3,6 +3,7 @@
 #include <memory>
 
 #include <GL/glew.h>
+#include <GLFW/glfw3.h>
 
 template<void(*func)(GLuint)>
 struct GLDeleter{

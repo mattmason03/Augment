@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <string>
+#include <iostream>
 
 #include <GL/glew.h>
 
@@ -23,10 +24,22 @@ static std::string LoadFromFile(const std::string fileName){
 	return fileContent;
 };
 
-static void PrintGLErrors(){
+#ifdef _DEBUG
+#define LOG(x,y) LogError(x,y)
+#define LOGGL(x) LogErrorGL(x)
+#else
+#define LOG(x)
+#define LOGGL(x)
+#endif
+
+static void LogError(std::string prefix, std::string message){
+	std::cout << prefix << ": " << message << std::endl;
+}
+
+static void LogErrorGL(std::string prefix){
 	GLenum err = glGetError();
 	while (err != GL_NO_ERROR){
-		printf("%i\n", err);
+		std::cout << prefix << ": " << err << std::endl;
 		err = glGetError();
 	}
 };
