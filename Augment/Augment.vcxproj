@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClInclude Include="inc\Batch2D.h" />
     <ClInclude Include="inc\EntityFramework.h" />
+    <ClInclude Include="inc\Pool.h" />
     <ClInclude Include="inc\ShaderProgram.h" />
     <ClInclude Include="inc\Texture2D.h" />
     <ClInclude Include="inc\UniqueGL.h" />
@@ -20,7 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Batch2D.cpp" />
-    <ClCompile Include="src\EntityFramework.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ShaderProgram.cpp" />
     <ClCompile Include="src\Texture2D.cpp" />

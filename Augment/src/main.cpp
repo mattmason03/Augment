@@ -24,6 +24,21 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 }
 int main(int argc, char** argv)
 {	
+	struct Position{
+		int x;
+		int y;
+	};
+
+	Component<Position>* pos;
+
+	EntityFramework<64> manager;
+
+	int siz = sizeof(Component<Position>::Type);
+
+	manager.RegisterComponent<Component<Position>>();
+	Entity ent = manager.CreateEntity();
+	manager.AddComponent<Component<Position>>(ent);
+	pos = manager.GetComponent<Component<Position>>(ent);
 
 	GLFWwindow* window;
 
