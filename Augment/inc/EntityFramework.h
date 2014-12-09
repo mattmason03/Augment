@@ -20,8 +20,8 @@ struct Component : BaseComponent{
 public:
 	static unsigned short componentId;
 
-	DataType* data;
-	DataType* operator->();
+	DataType& data;
+	DataType& operator->();
 
 	Component<DataType>();
 
@@ -37,12 +37,16 @@ public:
 	Entity current;
 
 	std::tuple<Component<T>&...> components;
+	std::tuple_size<std::tuple<Component<T>&...>> componentCount;
 
 	Mask mask;
 
 	bool operator!=(const EntityIter& x) const;
 	Entity operator*();
 	Entity operator++();
+
+	template <typename A, typename... B>
+	void BuildMask(Component<A> param, Component<B>...params);
 
 	EntityFramework& entityFramework;
 	friend class EntityFramework;
@@ -70,6 +74,8 @@ public:
 	template <typename... T>
 	EntityIter<T...> end();
 
+	unsigned int size;
+
 private:
 
 	template <typename A, typename... T>
@@ -77,8 +83,12 @@ private:
 
 	std::vector<Mask> entities;
 
-	std::vector<char> IndirectComponentPool;
+	std::vector<char> indirectComponentPool;
 
 	std::vector<std::vector<BaseComponent>*> componentVecs;
 
+	template <typename... T>
+	struct iteratorFriends{
+		friend class EntityIter<T...>;
+	};
 };

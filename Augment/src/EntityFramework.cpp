@@ -6,7 +6,7 @@ template <typename T>
 unsigned short Component<T>::componentId = USHRT_MAX;
 
 template <typename T>
-T* Component<T>::operator->(){
+T& Component<T>::operator->(){
 	return data;
 }
 
@@ -28,12 +28,24 @@ Entity EntityIter<T...>::operator*(){
 }
 
 template <typename... T>
-Entity EntityIter::operator++(){
-
+Entity EntityIter<T...>::operator++(){
+	++current;
+	Mask currentMask;
+	while (current < entityFramework.size){
+		if ((entityFramework.entities[current] & mask) == mask){
+			for (int i = 0; i < componentCount < ++i){
+				Component<T>& test = components.get<i>();
+				test.data = entityFramework.componentVecs[test.componentId][current];
+			}
+		}
+		++current;
+	}
+	return current;
 }
 
-template <typename A, typename... T>
-void EntityFramework::BuildEntityIterMask(EntityIter<T...> &iter, Component<A> param, Component<T>... params){
-	iter.mask.set(param.componentId, true);
-	BuildEntityIterMask(iter, params);
+template <typename... T>
+template <typename A, typename...B>
+void EntityIter<T...>::BuildMask(Component<A> param, Component<B>... params){
+	mask.set(param.componentId, true);
+	BuildMask(iter, params);
 }
