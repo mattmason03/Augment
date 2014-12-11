@@ -16,8 +16,6 @@
     <ClInclude Include="inc\ShaderProgram.h" />
     <ClInclude Include="inc\Utils.h" />
     <ClInclude Include="inc\UniqueGL.h" />
-    <ClInclude Include="inc\EntityFramework.h" />
-    <ClInclude Include="inc\Pool.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Texture2D.cpp" />

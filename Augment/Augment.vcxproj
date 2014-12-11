@@ -12,8 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="inc\Batch2D.h" />
-    <ClInclude Include="inc\EntityFramework.h" />
-    <ClInclude Include="inc\Pool.h" />
     <ClInclude Include="inc\ShaderProgram.h" />
     <ClInclude Include="inc\Texture2D.h" />
     <ClInclude Include="inc\UniqueGL.h" />
