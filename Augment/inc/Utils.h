@@ -28,7 +28,7 @@ static std::string LoadFromFile(const std::string fileName){
 #define LOG(x,y) LogError(x,y)
 #define LOGGL(x) LogErrorGL(x)
 #else
-#define LOG(x)
+#define LOG(x,y)
 #define LOGGL(x)
 #endif
 

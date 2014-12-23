@@ -11,8 +11,8 @@ Batch2D::Batch2D()
 vertexBuff(glGenBuffer()),
 indexBuff(glGenBuffer())
 {
-	shaderProgram.LoadShader(R"(C:\git\Augment\Augment\res\shader\Batch2D.vert)", GL_VERTEX_SHADER);
-	shaderProgram.LoadShader(R"(C:\git\Augment\Augment\res\shader\Batch2D.frag)", GL_FRAGMENT_SHADER);
+	shaderProgram.LoadShader(R"(D:\git\Augment\Augment\res\shader\Batch2D.vert)", GL_VERTEX_SHADER);
+	shaderProgram.LoadShader(R"(D:\git\Augment\Augment\res\shader\Batch2D.frag)", GL_FRAGMENT_SHADER);
 	shaderProgram.Link();
 
 	//bind vao to capture state

@@ -16,16 +16,13 @@
     <ClInclude Include="inc\ShaderProgram.h" />
     <ClInclude Include="inc\Utils.h" />
     <ClInclude Include="inc\UniqueGL.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Texture2D.cpp" />
-    <ClCompile Include="src\Batch2D.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\ShaderProgram.cpp" />
-    <ClCompile Include="src\UniqueGL.cpp" />
+    <ClInclude Include="inc\ThreadPool.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shader\Batch2D.frag" />
     <None Include="res\shader\Batch2D.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Augment.cpp" />
   </ItemGroup>
 </Project>

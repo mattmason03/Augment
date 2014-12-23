@@ -27,14 +27,14 @@
     <ClInclude Include="inc\Utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\AugmentServer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="res\shader\Batch2D.frag" />
     <None Include="res\shader\Batch2D.vert" />
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\Augment.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{66D84848-5C4A-4867-9AA3-629CE98824EA}</ProjectGuid>
+    <ProjectGuid>{E00AA314-FC9F-425C-8B11-3753773FAAB9}</ProjectGuid>
     <RootNamespace>Augment</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,7 +115,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)external\inc\;$(SolutionDir)inc\;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -152,7 +152,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(SolutionDir)external\inc\;$(SolutionDir)inc\;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
